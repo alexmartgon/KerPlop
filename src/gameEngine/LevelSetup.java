@@ -21,18 +21,17 @@ public class LevelSetup{
 	}
 
 	public void createLevel(int levelNum) {
-		// TODO Auto-generated method stub
-		for(int i = 0; i < Board.length; i++) {
+		for(int i = 0; i < Board.length; i++) { //fills the board with null spaces
 			if (Board[i] != null) {
 				Board[i] = null;
 			}
 		}
 		for(int i = 0; i < interactingPieces.size(); i++) {
-			interactingPieces.remove(0);
+			interactingPieces.remove(0); //removes all existing interacting pieces
 		}
-		switch(levelNum) {
+		switch(levelNum) { // switch statement to plan out each level.
 		case 1:
-			Board[1] = new Thorn('T', "Thorn", 1);
+			Board[1] = new Thorn('T', "Thorn", 1); // each piece and position for level one
 			Board[3] = new Horse('H', "Horse", 3);
 			Board[6] = new Archer('A', "Archer", 6);
 			Board[7] = new Prize('X', "Prize", 7);
@@ -44,7 +43,7 @@ public class LevelSetup{
 			break;
 
 		case 2:
-			Board[0] = new Prize('X', "Prize", 0);
+			Board[0] = new Prize('X', "Prize", 0); // each piece and position for level two
 			Board[1] = new Thorn('T', "Thorn", 1);
 			Board[2] = new Horse('H', "Horse", 2);
 			Board[3] = new Giant('G', "Giant", 3);
@@ -58,7 +57,7 @@ public class LevelSetup{
 			Board[20] = new Prize('X', "Prize", 20);
 			break;
 		}
-		System.out.println("Level Legend:");
+		System.out.println("Level Legend:"); // the legend and a small explanation for each piece
 		System.out.println(" P - Player (you)");
 		System.out.println(" X - Prize (awards 1 point!)");
 		System.out.println(" R - Rat (Bites you if it hits you.)");
@@ -69,14 +68,12 @@ public class LevelSetup{
 		System.out.println(" / - Branch (Just a branch.)");
 	}
 
-	public Drawable[] getBoard() {
-		// TODO Auto-generated method stub
+	public Drawable[] getBoard() { // moves the board to the game engine
 		return Board;
 	}
 
-	public ArrayList<Moveable> getMovingPieces() {
+	public ArrayList<Moveable> getMovingPieces() { // tests each piece to see if the piece is a movable one, and adds it to the Movable Pieces arraylist
 		for(int i = 0; i < Board.length; i++) {
-
 			if (Board[i] != null && (Board[i].toString().equals("H - Horse") || Board[i].toString().equals("R - Rat"))){
 				Moveable Temp = (Moveable) Board[i];
 				movingPieces.add(Temp);
@@ -86,7 +83,7 @@ public class LevelSetup{
 	}
 
 
-	public ArrayList<GamePiece> getInteractingPieces() {
+	public ArrayList<GamePiece> getInteractingPieces() { //tests each piece to see if it has an interaction, and if it does moves it to interacting pieces arraylist
 		for(int i = 0; i < Board.length; i++) {
 			if(Board[i] != null && i != PLAYER_START_LOCATION && i != 11) {
 				interactingPieces.add((GamePiece) Board[i]);
@@ -95,7 +92,7 @@ public class LevelSetup{
 		return interactingPieces;
 	}
 
-	public int getPlayerStartLoc() {
+	public int getPlayerStartLoc() { // getter for playr start location
 		return PLAYER_START_LOCATION;
 	}
 }
