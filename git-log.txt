@@ -1,3 +1,5 @@
+Pair Programmed with partner all the way through to the end
+
 *   2cab99c : Merge branch 'master' of https://github.com/alexmartgon/KerPlop
 |\  
 | * 62fe936 : Initial commit
